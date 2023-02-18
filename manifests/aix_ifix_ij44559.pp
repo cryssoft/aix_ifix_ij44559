@@ -2,6 +2,7 @@
 #  2023/02/14 - cp - This one applies to both AIX and VIOS in our environment,
 #		so it's a little more complicated that the first one.
 #
+#  2023/02/17 - cp - Fixing the reference to the aix_ifix hash
 #
 #-------------------------------------------------------------------------------
 #
@@ -128,7 +129,7 @@ class aix_ifix_ij44559 {
             $ifixFullName = "${ifixName}${ifixSuffix}"
 
             #  Don't bother with this if it's already showing up installed
-            unless ($ifixFullName in $::facts['aix_ifix'].keys) {
+            unless ($ifixFullName in $::facts['aix_ifix']['hash'].keys) {
  
                 #  Build up the complete name of the ifix staging source and target
                 $ifixStagingSource = "puppet:///modules/profile/${ifixName}${ifixSuffix}.${ifixBuildDate}.epkg.Z"
